@@ -17,6 +17,8 @@ const io = new Server(server ,{
 
 const users = {};
 
+console.log("user  " );
+
 io.on('connection',(socket) => {
     socket.on('new-user-joined' , (name) => {
         console.log("user connected " + name);
@@ -25,7 +27,9 @@ io.on('connection',(socket) => {
     });
 
     socket.on('send', (message) =>{
+        console.log("user connected send");
         socket.broadcast.emit('receive' ,{message:message ,name :users[socket.id]});
+   
     })
 
     socket.on('disconnect', () => {
