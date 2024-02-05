@@ -10,7 +10,7 @@ const  server = http.createServer(app);
 
 const io = new Server(server ,{
     cors : {
-        origin :'realtime-chatting-server-3m2pz87qc-vishal-rathores-projects.vercel.app',
+        origin :'realtime-chatting-server.vercel.app',
         methods : ["GET" ,'POST'],
     }
 })
