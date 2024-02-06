@@ -2,7 +2,7 @@ import './App.css';
 import io from 'socket.io-client';
 import { useState } from 'react';
 
-const socket = io();
+const socket = io.connect();
 
 function App() {
 
