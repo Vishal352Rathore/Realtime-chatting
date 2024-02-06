@@ -21,6 +21,7 @@ function App() {
       socket.emit('new-user-joined', userName);
       setUserRegister(false);
       console.log("userName "+ userName);
+      setUserName('');
     }
   }
 
