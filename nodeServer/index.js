@@ -10,7 +10,7 @@ const  server = http.createServer(app);
 
 const io = new Server(server ,{
     cors : {
-        // origin :'http://realtime-chatting-server.vercel.app',
+        origin :'http://realtime-chatting-server.vercel.app',
         methods : ["GET" ,'POST'],
     }
 })
@@ -20,15 +20,17 @@ const users = {};
 console.log("user  " );
 
 io.on('connection',(socket) => {
+    console.log("connected ");
+
     socket.on('new-user-joined' , (name) => {
         console.log("user connected " + name);
           users[socket.id] = name ;
-          socket.broadcast.emit('user-joined' , name);
+          socket.emit('user-joined' , name);
     });
 
     socket.on('send', (message) =>{
         console.log("user connected send");
-        socket.broadcast.emit('receive' ,{message:message ,name :users[socket.id]});
+        socket.emit('receive' ,{message:message ,name :users[socket.id]});
    
     })
 
