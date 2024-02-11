@@ -50,3 +50,5 @@ app.post('/', (req, res) =>
 server.listen(3001, ()=>{
     console.log("hello");
 })
+
+module.exports = app;
