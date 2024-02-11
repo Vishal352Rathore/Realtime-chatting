@@ -10,7 +10,7 @@ const  server = http.createServer(app);
 
 const io = new Server(server ,{
     cors : {
-        origin :'http://realtime-chatting-server.vercel.app',
+        origin :'http://realtime-chatting-server.vercel.app.com',
         methods : ["GET" ,'POST'],
     }
 })
@@ -38,6 +38,10 @@ io.on('connection',(socket) => {
         console.log("user disconnected");
     })
 })
+
+app.get('/', (req, res) =>
+    res.send(`Node and Express server running on port 3001`)
+);
 
 server.listen(3001, ()=>{
     console.log("hello");
