@@ -29,7 +29,7 @@ io.on('connection',(socket) => {
     });
 
     socket.on('send', (message) =>{
-        console.log("user connected send");
+        console.log("user connected send" + message);
         socket.broadcast.emit('receive' ,{message:message ,name :users[socket.id]});
    
     })
@@ -41,6 +41,10 @@ io.on('connection',(socket) => {
 
 app.get('/', (req, res) =>
     res.send(`Node and Express server running on port 3001`)
+);
+
+app.post('/', (req, res) =>
+    res.send(`Node server running on port 3001`)
 );
 
 server.listen(3001, ()=>{
