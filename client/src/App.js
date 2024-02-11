@@ -2,7 +2,7 @@ import './App.css';
 import io from 'socket.io-client';
 import { useState } from 'react';
 
-const socket = io.connect("http://realtime-chatting-server.vercel.app.com");
+const socket = io.connect("http://realtime-chatting-server.vercel.app");
 
 function App() {
 
