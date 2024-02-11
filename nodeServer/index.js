@@ -47,7 +47,7 @@ app.post('/', (req, res) =>
     res.send(`Node server running on port 3001`)
 );
 
-server.listen(3001, ()=>{
+server.listen('https://realtime-chatting-server.vercel.app', ()=>{
     console.log("hello");
 })
 
