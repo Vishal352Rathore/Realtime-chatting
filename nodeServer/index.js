@@ -13,7 +13,7 @@ const  server = http.createServer(app);
 
 const io = new Server(server, {
         cors : {
-            origin :'https://realtime-chatting-client.vercel.app/',
+            origin :'realtime-chatting-client.vercel.app',
             methods : ["GET" ,'POST'],
         }
     });
