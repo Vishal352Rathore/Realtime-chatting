@@ -2,7 +2,7 @@ import './App.css';
 import io from 'socket.io-client';
 import { useState } from 'react';
 
-const ENDPOINT = "https://realtime-chatting-server.vercel.app/" ;
+const ENDPOINT = "https://realtime-chatting-server.vercel.app/socket.io" ;
 let socket = io(ENDPOINT);
 console.log(socket);
 
