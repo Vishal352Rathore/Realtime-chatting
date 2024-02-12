@@ -8,14 +8,14 @@ const PORT = process.env.PORT || 3001
 const app = express();
 
 app.use(cors({
-    origin :'https://realtime-chatting-client.vercel.app/',
+    origin :'https://realtime-chatting-server.vercel.app/',
 }));
 
 const  server = http.createServer(app);
 
 const io = new Server(server, {
         cors : {
-            origin :'https://realtime-chatting-client.vercel.app/',
+            origin :'https://realtime-chatting-server.vercel.app/',
             methods : ["GET" ,'POST'],
         }
     });
