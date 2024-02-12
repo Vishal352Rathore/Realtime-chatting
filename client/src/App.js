@@ -2,28 +2,16 @@ import './App.css';
 import io from 'socket.io-client';
 import { useState } from 'react';
 
-const socket = io.connect("https://realtime-chatting-server.vercel.app");
+const ENDPOINT = "https://realtime-chatting-server.vercel.app/" ;
+let socket = io(ENDPOINT);
+console.log(socket);
 
-function App() {
+const  App = () =>{
 
   const [userName, setUserName] = useState('');
   const [userRegister, setUserRegister] = useState(true);
-
   const [message, setMessage] = useState('');
 
-  const handleClick = (e) => {
-    e.preventDefault();
-
-    if (userName.trim() === '') {
-      alert('Please fill out the name.');
-      return;
-    }else{
-      socket.emit('new-user-joined', userName);
-      setUserRegister(false);
-      console.log("userName "+ userName);
-      setUserName('');
-    }
-  }
 
   window.onload = function () {
 
@@ -62,6 +50,20 @@ socket.on('receive', (data) => {
 })
 };
 
+const handleClick = (e) => {
+  e.preventDefault();
+
+  if (userName.trim() === '') {
+    alert('Please fill out the name.');
+    return;
+  }else{
+    socket.emit('new-user-joined', userName);
+    setUserRegister(false);
+    console.log("userName "+ userName);
+    setUserName('');
+  }
+}
+
   return (
     <div className="App">
     
@@ -70,8 +72,8 @@ socket.on('receive', (data) => {
 
             <p style={{fontWeight : 'bold'}}>Please enter the name to join the chat</p>
             <form >
-              <input  id='nameInp' type="text" value={userName} onChange={(e) => setUserName(e.target.value)}></input>
-              <button className='btn' type='submit' onClick={(e) => handleClick(e)}>Enter</button>
+              <input  disabled = {!userRegister}  id='nameInp' type="text" value={userName} onChange={(e) => setUserName(e.target.value)}></input>
+              <button disabled = {!userRegister}  className='btn' type='submit' onClick={(e) => handleClick(e)}>Enter</button>
             </form>
           </div>
                <div className='container'>
