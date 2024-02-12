@@ -1,5 +1,5 @@
 const express = require("express");
-const http = require("http");
+const https = require("https");
 const cors = require("cors");
 const  {Server}  = require("socket.io");
 
@@ -8,17 +8,17 @@ const PORT = process.env.PORT || 3001
 const app = express();
 
 app.use(cors({
-    origin :'http://realtime-chatting-client.vercel.app'
+    origin :'https://realtime-chatting-client.vercel.app'
 }));
 
-const  server = http.createServer(app);
+const  server = https.createServer(app);
 
 // const io = Server(server);
 
 const io = new Server(server, {
         cors : {
             path: '/socket.io',
-            origin :'http://realtime-chatting-client.vercel.app',
+            origin :'https://realtime-chatting-client.vercel.app',
             methods : ["GET" ,'POST'],
         }
     });
