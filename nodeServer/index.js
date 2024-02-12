@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001
 const app = express();
 
 app.use(cors({
-    origin :'https://realtime-chatting-client.vercel.app',
+    origin :'http://realtime-chatting-client.vercel.app'
 }));
 
 const  server = http.createServer(app);
@@ -18,12 +18,13 @@ const  server = http.createServer(app);
 const io = new Server(server, {
         cors : {
             path: '/socket.io',
-            origin :'https://realtime-chatting-client.vercel.app',
+            origin :'http://realtime-chatting-client.vercel.app',
             methods : ["GET" ,'POST'],
         }
     });
 
 const users = {};
+
 
 console.log("user  " );
 
