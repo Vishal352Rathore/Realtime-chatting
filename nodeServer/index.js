@@ -18,11 +18,14 @@ const  server = https.createServer(app);
 
 const io = new Server(server, {
         cors : {
-            path: '/socket.io' ,
+            origin: "/",
             addTrailingSlash: false,
             origin :'https://realtime-chatting-client.vercel.app',
             methods : ["GET" ,'POST'],
-        }
+            credentials: true
+        },
+        transports: ['polling','websocket'],
+        allowEIO3: true
     });
 
 const users = {};
