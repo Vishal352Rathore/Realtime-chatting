@@ -10,7 +10,7 @@ const app = express();
 app.use(cors({
     origin :'https://realtime-chatting-client.vercel.app'
 }));
-
+    
 const  server = https.createServer(app);
 
 // const io = Server(server);
