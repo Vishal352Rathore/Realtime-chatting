@@ -8,7 +8,8 @@ const PORT = process.env.PORT || 3001
 const app = express();
 
 app.use(cors({
-    origin :'https://realtime-chatting-client.vercel.app'
+    origin :'https://realtime-chatting-client.vercel.app',
+    path: '/socket.io'
 }));
     
 const  server = https.createServer(app);
