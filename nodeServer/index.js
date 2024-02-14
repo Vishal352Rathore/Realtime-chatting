@@ -9,6 +9,7 @@ const app = express();
 
 app.use(cors({
     origin :'https://realtime-chatting-client.vercel.app'
+  
 }));
     
 const  server = https.createServer(app);
@@ -17,7 +18,7 @@ const  server = https.createServer(app);
 
 const io = new Server(server, {
         cors : {
-            path: '/api/socket',
+            path: '/socket.io' ,
             addTrailingSlash: false,
             origin :'https://realtime-chatting-client.vercel.app',
             methods : ["GET" ,'POST'],
